@@ -1,4 +1,4 @@
-# Core Object Oriented JavaScript
+Core Object Oriented JavaScript
 
 A day-by-day structured deep dive into object-oriented JavaScript. Read articles, watch videos, complete lessons and exercises, and implement a final project.
 
@@ -46,8 +46,8 @@ Your objectives for the day is to:
 
 ### Stretch
 
-- [ ] Do exercises for Chapter 4 of [Object Oriented Javascript][oojs] (and maybe read it)
-- [ ] Study these [top 50 OOPs interview questions](http://career.guru99.com/top-50-oops-interview-questions/)
+- [x] Do exercises for Chapter 4 of [Object Oriented Javascript][oojs] (and maybe read it)
+- [x] Study these [top 50 OOPs interview questions](http://career.guru99.com/top-50-oops-interview-questions/)
 
 ## Day 3: Prototype and Inheritance
 
