@@ -23,7 +23,7 @@ Your objectives for the day is to:
 
 ### Closures
 
-- [ ] Complete the [Closures lesson][udacity]
+- [x] Complete the [Closures lesson][udacity]
 
 ## Day 2: Objects and "this"
 
