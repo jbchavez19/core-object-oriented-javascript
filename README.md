@@ -1,4 +1,4 @@
-Core Object Oriented JavaScript
+# Core Object Oriented JavaScript
 
 A day-by-day structured deep dive into object-oriented JavaScript. Read articles, watch videos, complete lessons and exercises, and implement a final project.
 
