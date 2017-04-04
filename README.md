@@ -32,8 +32,8 @@ Your objectives for the day is to:
 - [x] Watch [Video introduction to Object Oriented Javascript](https://www.youtube.com/watch?v=O8wwnhdkPE4) (1 Hour)
 - [x] Read [Javascript Objects in Detail](http://javascriptissexy.com/javascript-objects-in-detail/)
 - [x] Read pages 173 to 184 in [Professional JS for Web Developers][projs]
-- [ ] Signup for a free Team Treehouse trial and complete their [Object Oriented Javascript Course] (https://teamtreehouse.com/library/objectoriented-javascript)
-- [ ] Skim this [cheat sheet][cheat]
+- [x] Signup for a free Team Treehouse trial and complete their [Object Oriented Javascript Course] (https://teamtreehouse.com/library/objectoriented-javascript)
+- [x] Skim this [cheat sheet][cheat]
 
 ### This
 
