@@ -40,6 +40,23 @@ var Player = function () {
   this.x = 0;
   this.y = 375;
 
+  this.handleInput = function (keyboardKey) {
+    switch(keyboardKey) {
+      case 'left':
+      this.x -= (101 * (this.x > 0));
+      break;
+      case 'up':
+      this.y -= (83 * (this.y > 0));
+      break;
+      case 'right':
+      this.x += (101 * (this.x < 404));
+      break;
+      case 'down':
+      this.y += (83 * (this.y < 375));
+      break;
+    }
+  };
+
   this.sprite = 'images/char-boy.png';
 }
 
