@@ -1,3 +1,7 @@
+function updateScore(score) {
+  document.getElementsByTagName("title")[0].innerHTML = "Frogger :: Score " + score;
+}
+
 var gameObject = function () {
   this.x = 0;
   this.y = 0;
@@ -37,8 +41,7 @@ Enemy.prototype.update = function(dt) {
 var Player = function () {
   gameObject.call(this);
 
-  this.x = 0;
-  this.y = 375;
+  this.score = 0;
 
   this.handleInput = function (keyboardKey) {
     switch(keyboardKey) {
@@ -57,6 +60,13 @@ var Player = function () {
     }
   };
 
+  this.reset = function () {
+    this.x = 0;
+    this.y = 375;
+  };
+
+  this.reset();
+
   this.sprite = 'images/char-boy.png';
 }
 
@@ -64,7 +74,12 @@ Player.prototype = Object.create(gameObject.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.update = function(dt) {
+  if(this.y < 0) {
+    this.score++;
+    updateScore(this.score);
+    this.reset();
 
+  }
 };
 
 
