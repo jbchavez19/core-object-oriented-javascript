@@ -1,47 +1,47 @@
-function updateScore(score) {
+//Settings
+
+var score = 0;
+
+function updateScore() {
   document.getElementsByTagName("title")[0].innerHTML = "Frogger :: Score " + score;
 }
 
 var gameObject = function () {
-  this.x = 0;
-  this.y = 0;
+
 };
 
 gameObject.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-// Enemies our player must avoid
 var Enemy = function() {
-    gameObject.call(this);
+  gameObject.call(this);
 
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+  // enemy.y gets a random starting position: 43, 126, or 209
+  // enemy.x always starts outside view
+  this.y = 228 - 83 * Math.floor(Math.random() * 3)
+  this.x = -101;
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+  // speed gets a random number between 1-5, plus score
+  this.speed = Math.floor((Math.random() * ((score + 1) * 60)) + 20);
+
+  this.sprite = 'images/enemy-bug.png';
 };
 
 Enemy.prototype = Object.create(gameObject.prototype);
 Enemy.prototype.constructor = Enemy;
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
+  this.x += this.speed * dt;
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+  if(this.x > 505) {
+    var index = allEnemies.indexOf(this);
+    allEnemies.splice(index, 1);
+  }
+};
 
 var Player = function () {
   gameObject.call(this);
-
-  this.score = 0;
 
   this.handleInput = function (keyboardKey) {
     switch(keyboardKey) {
@@ -75,33 +75,31 @@ Player.prototype.constructor = Player;
 
 Player.prototype.update = function(dt) {
   if(this.y < 0) {
-    this.score++;
-    updateScore(this.score);
+    score++;
+    updateScore();
     this.reset();
-
   }
 };
 
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
 var allEnemies = [];
 var player;
 
-//allEnemies.push(new Enemy());
 player = new Player();
 
+var spawnEnemy = function () {
+  allEnemies.push(new Enemy());
+  console.log("Number of Enemies", allEnemies.length);
+  setTimeout(spawnEnemy, 1000);
+};
+spawnEnemy();
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+  var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
