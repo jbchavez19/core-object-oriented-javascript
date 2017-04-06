@@ -77,11 +77,11 @@ Your objectives for the day is to:
 - [x] Complete the [Pseudoclassical Patterns][udacity] Lesson on Udacity
 - [x] Complete the [Superclass and Subclass Patterns][udacity] Lesson on Udacity
 - [x] Complete the [Pseudoclassical Sublasses][udacity] Lesson on Udacity
-- [ ] Start (and maybe finish) the [Final Project][udacity] Lesson on Udacity
+- [x] Start (and maybe finish) the [Final Project][udacity] Lesson on Udacity
 
 ## Day 5: Final Project and check your understanding
 
-- [ ] Complete the [Final Project][udacity] Lesson on Udacity
+- [x] Complete the [Final Project][udacity] Lesson on Udacity
 
 Do you know/understand:
 
@@ -103,8 +103,8 @@ Do you know/understand:
 
 ## Stretch Goals
 
-- [ ] Complete the [learn-js OO tutorial](https://www.learn-js.org/en/Object_Oriented_JavaScript)
-- [ ] Complete the [learn-js function context tutorial](https://www.learn-js.org/en/Function_Context)
+- [x] Complete the [learn-js OO tutorial](https://www.learn-js.org/en/Object_Oriented_JavaScript)
+- [x] Complete the [learn-js function context tutorial](https://www.learn-js.org/en/Function_Context)
 - [ ] Complete the [learn-js inheritance tutorial](https://www.learn-js.org/en/Inheritance)
 - [ ] Read [Object Oriented Javascript for Beginners](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS)
 - [ ] Read [Chapter 8 of Eloquent Javascript](http://eloquentjavascript.net/1st_edition/chapter8.html)
