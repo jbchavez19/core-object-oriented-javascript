@@ -1,17 +1,30 @@
-//Settings
-
 var score = 0;
 
 function updateScore() {
   document.getElementsByTagName("title")[0].innerHTML = "Frogger :: Score " + score;
 }
 
-var gameObject = function () {
 
+var gameObject = function () {
+  this.collisionRectangle = {};
 };
 
 gameObject.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+gameObject.prototype.collidesWith = function(object) {
+  var rec1 = this.collisionRectangle;
+  var rec2 = object.collisionRectangle;
+
+  if(rec1.x > (rec2.x + rec2.width) || rec2.x > (rec1.x + rec1.width)) {
+    return false;
+  }
+  if(rec1.y > (rec2.y + rec2.height) || rec2.y > (rec1.y + rec1.height)) {
+    return false;
+  }
+
+  return true;
 }
 
 var Enemy = function() {
@@ -22,8 +35,8 @@ var Enemy = function() {
   this.y = 228 - 83 * Math.floor(Math.random() * 3)
   this.x = -101;
 
-  // speed gets a random number between 1-5, plus score
-  this.speed = Math.floor((Math.random() * ((score + 1) * 60)) + 20);
+
+  this.speed = Math.floor((Math.random() * 100) + 50) + score;
 
   this.sprite = 'images/enemy-bug.png';
 };
@@ -34,6 +47,19 @@ Enemy.prototype.constructor = Enemy;
 Enemy.prototype.update = function(dt) {
   this.x += this.speed * dt;
 
+  this.collisionRectangle = {
+    x: this.x,
+    y: this.y,
+    width: 101,
+    height: 83
+  };
+
+  if(this.collidesWith(player)) {
+    score = 0;
+    updateScore();
+    player.reset();
+  }
+
   if(this.x > 505) {
     var index = allEnemies.indexOf(this);
     allEnemies.splice(index, 1);
@@ -42,6 +68,7 @@ Enemy.prototype.update = function(dt) {
 
 var Player = function () {
   gameObject.call(this);
+
 
   this.handleInput = function (keyboardKey) {
     switch(keyboardKey) {
@@ -74,6 +101,12 @@ Player.prototype = Object.create(gameObject.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.update = function(dt) {
+  this.collisionRectangle = {
+    x: this.x + 20,
+    y: this.y + 60,
+    width: 61,
+    height: 10
+  };
   if(this.y < 0) {
     score++;
     updateScore();
@@ -88,7 +121,6 @@ player = new Player();
 
 var spawnEnemy = function () {
   allEnemies.push(new Enemy());
-  console.log("Number of Enemies", allEnemies.length);
   setTimeout(spawnEnemy, 1000);
 };
 spawnEnemy();
